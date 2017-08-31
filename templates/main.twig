@@ -1,0 +1,41 @@
+{% block head %}
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block pagetitle %}New In Town{% endblock pagetitle %}</title>
+    <link rel="stylesheet" href="{{ base_url() }}/css/app.css">
+  </head>
+  <body>
+
+    <div class="title-bar" data-responsive-toggle="new-in-town-menu" data-hide-for="medium">
+      <button class="menu-icon title-bar-left" type="button" data-toggle></button>
+    </div>
+
+    <div class="top-bar" id="new-in-town-menu">
+      <ul class="vertical medium-horizontal menu">
+        <li><a {% if section == "Home" %}class="active"{% endif %}href="/">Home</a></li>
+        <li><a {% if section == "Work" %}class="active"{% endif %}href="/work">Work</a></li>
+        <li><a href="/play/#allposts">Play</a></li>
+        <li><a {% if section == "Contact" %}class="active"{% endif %}href="/contact">Contact</a></li>
+      </ul>
+    </div>
+
+{% set section = "" %}
+
+{% endblock head %}
+
+{% block content %}
+{% endblock content %}
+
+{% block foot %}
+  <script src="{{ base_url() }}/bower_components/jquery/dist/jquery.js"></script>
+  <script src="{{ base_url() }}/bower_components/what-input/what-input.js"></script>
+  <script src="{{ base_url() }}/bower_components/foundation-sites/dist/foundation.js"></script>
+  <script src="{{ base_url() }}/js/app.js"></script>
+  </body>
+</html>
+{% endblock foot %}

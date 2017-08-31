@@ -1,0 +1,26 @@
+{% extends "main.twig" %}
+{% block pagetitle %}New In Town // Home{% endblock pagetitle %}
+{% set section = "Home" %}
+
+{% block content %}
+  <div class="home">
+    <div class="row expanded collapse">
+    
+    <div class="small-12 large-2 large-push-10 columns">
+      <div class="home-img">
+        <img src="img/kerry.jpg" />
+      </div>
+    </div>
+
+    <div class="small-12 large-10 large-pull-2 columns">
+      <div class="home-text"> 
+        <h1>Hello, I'm new in town.</h1>
+        <p>I'm Kerry Manning, a web developer based in Sheffield.</p>
+        <p>I enjoy solving problems, combining creative thinking with the right technology: my toolkit includes HTML, CSS, Sass, Javascript, PHP, MySQL and WordPress.</p>
+        <p>I'm currently availale for freelance work: if you have a project you'd like to discuss please <a href="{{ path_for('contact') }}">get in touch</a> or <a href="{{ path_for('work') }}">view my latest work.</a></p>
+      </div>
+    </div>
+      
+    </div>
+  </div>
+{% endblock content %}

@@ -1,0 +1,53 @@
+{% extends 'main.twig' %}
+
+{% set section = "Work" %}
+
+{% block pagetitle %}New In Town // Work // {{project.title}}{% endblock pagetitle %}
+
+{% block content %}
+
+  <div class="project">
+		
+			<div class="row">
+				<div class="small-12 small-centered columns">
+					<h1>
+						<a href="/work">Work //</a>
+						{{ project.title }}
+					</h1>
+				</div>
+			</div>
+
+			<div class="row proj">
+				<div class="small-12 large-6 columns">
+					<div class="proj-tags">
+						<h5>This project was built using:</h5>
+						{% for tag in project.tech_tags %}
+						<span>{{ tag }}</span>
+						{% endfor %}
+					</div>
+					<div class="proj-text">
+						<h5>{{ project.description}}</h5>
+						{% for p in project.body %}
+						<p>{{ p | raw }}</p>
+						{% endfor %}
+						<p><a href="{{ project.website }}" class="button">Visit {{ project.title }}</a></p>
+					</div>
+				</div>
+				<div class="small-12 large-6 columns">
+					<div class="proj-img">
+						{% for s, a in project.images %}
+						<img src="{{ s }}" alt="{{ a }}" data-toggle="{{ a |replace({' ':''}) }}" />
+						<div class="large reveal" id="{{ a |replace({' ':''}) }}" data-reveal>
+						  <img src="{{ s }}" alt="{{ a }}" />
+						  <button class="close-button" data-close aria-label="Close reveal" type="button">
+						    <span aria-hidden="true">&times;</span>
+						  </button>
+						</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+
+  </div>
+
+{% endblock content %}

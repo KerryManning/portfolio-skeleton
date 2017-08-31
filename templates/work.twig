@@ -1,0 +1,42 @@
+{% extends 'main.twig' %}
+
+
+{% set section = "Work" %}
+
+{% block pagetitle %}New In Town // Work{% endblock pagetitle %}
+
+{% block content %}
+<div class="work">
+
+{% set grid_cols = 3 %}
+{% set total = thumbnail_array | length %}
+{% set counter = 0 %}
+
+  {% for title, thumb in thumbnail_array %}
+    {% if (counter % grid_cols) == 0 %}
+      <div class="row"  data-equalizer data-equalize-by-row="true">
+    {% endif %}
+    {% if (counter == total - 1) %}
+      <div class="small-12 medium-4 columns end data-equalizer-watch">
+    {% else %}
+      <div class="small-12 medium-4 columns data-equalizer-watch">
+    {% endif %}    
+      <a href="{{ path_for('project', { 'title': (title|replace(" ", "-"))|lower }) }}">
+        <div class="proj-thumb">
+          {% for image in thumb %}
+          {% for i, a in image %}
+	          <img src="{{ i }}" alt="{{ a }}" />
+          {% endfor %}
+          {% endfor %}
+	        <p class="proj-title"><span>{{ title }}</span></p>
+        </div> 
+      </a>
+    </div>
+    {% set counter = counter + 1 %}
+    {% if (counter % grid_cols) == 0 %}
+      </div>
+    {% endif %}
+  {% endfor %}
+
+</div>
+{% endblock content %}

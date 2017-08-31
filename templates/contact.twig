@@ -1,0 +1,48 @@
+{% extends 'main.twig' %}
+
+{% set section = "Contact" %}
+
+{% block pagetitle %}New In Town // Contact{% endblock pagetitle %}
+
+{% block content %}
+<div class="contact">
+
+<div class="row" data-equalizer data-equalize-on="medium">
+	<div class="small-12 large-6 columns">
+		<section data-equalizer-watch>
+			<h1>Hello!</h1>
+			<p>Thanks for checking out what's new in town!</p>
+			<p>If you're ready to get started on a new project, or you need to update an exisiting website, or if you'd simply like to talk over an idea, then get in touch!</p>
+			<p>07813987570</p>
+			<p><a href="mailto:kerry@new-in-town.uk">kerry@new-in-town.uk</a></p>
+		</section>
+	</div>
+	<div class="small-12 large-6 columns">
+		<section data-equalizer-watch>
+		{% if error_message %}
+			{{ error_message }}
+		{% endif %}
+		{% if status=="thanks" %}
+			<p>{{ "Your email has been sent successfully, thanks!" }}</p>
+		{% else %}
+			<form method="post" action="/contact">
+	      <fieldset>
+	        <input type="text" id="fullname" name="fullname" placeholder="Name">
+	        <input type="email" id="email" name="email" placeholder="Email Address">
+	        <textarea rows="5" id="message" name="message" placeholder="Your message..."></textarea>
+	        <div style="display:none">
+	      		<label for="address">Address
+	        		<input type="text" id="address" name="address" style="display:none"/>
+	        		<p>Please leave this field blank.</p>
+	      		</label>
+	    		</div>
+	      </fieldset>
+	      <button type="submit" class="button">Send</button>
+	    </form>
+	  {% endif %}
+		</section>
+	</div>
+</div>
+
+</div>
+{% endblock content %}
